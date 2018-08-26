@@ -292,7 +292,7 @@ int main() {
             // Behavior : Let's see what to do.
             double speed_diff = 0;
             const double MAX_SPEED = 49.5;
-            const double MAX_ACC = .8;//.224;// change lane accelerate ????
+            const double MAX_ACC = .224;//.224;// change lane accelerate 
             if ( car_ahead ) { // Car ahead
               if ( !car_left && lane > 0 ) {
                 // if there is no car left and there is a left lane.
@@ -350,7 +350,7 @@ int main() {
 
             // Setting up target points in the future.// for change lane
             //lane =0;
-            //three next is to smooth paths
+            //three next values is to smooth paths
             vector<double> next_wp0 = getXY(car_s + 30, 2 + 4*lane, map_waypoints_s, map_waypoints_x, map_waypoints_y);
             vector<double> next_wp1 = getXY(car_s + 60, 2 + 4*lane, map_waypoints_s, map_waypoints_x, map_waypoints_y);
             vector<double> next_wp2 = getXY(car_s + 90, 2 + 4*lane, map_waypoints_s, map_waypoints_x, map_waypoints_y);
@@ -376,7 +376,7 @@ int main() {
             tk::spline s;
             s.set_points(ptsx, ptsy);
 
-            // Output path points from previous path for continuity.//???
+            // Output path points from previous path for continuity.//
           	vector<double> next_x_vals;
           	vector<double> next_y_vals;
             for ( int i = 0; i < prev_size; i++ ) {
@@ -387,7 +387,7 @@ int main() {
             // Calculate distance y position on 30 m ahead./// 30 m ahead!!!
             double target_x = 30.0;
             double target_y = s(target_x);
-            double target_dist = sqrt(target_x*target_x + target_y*target_y);/////???
+            double target_dist = sqrt(target_x*target_x + target_y*target_y);/////
 
             double x_add_on = 0;
 
@@ -398,8 +398,8 @@ int main() {
               } else if ( ref_vel < MAX_ACC ) {// speed is negative
                 ref_vel = MAX_ACC;
               }
-              double N = target_dist/(0.02*ref_vel/2.24);///.02ms   interval time//  2.24???
-              double x_point = x_add_on + target_x/N;///?????
+              double N = target_dist/(0.02*ref_vel/2.24);///.02ms   interval time//  2.24 maybe is relative to rate
+              double x_point = x_add_on + target_x/N;///vehicle xy axis 
               double y_point = s(x_point);
 
               x_add_on = x_point;
@@ -407,7 +407,7 @@ int main() {
               double x_ref = x_point;
               double y_ref = y_point;
 
-              x_point = x_ref * cos(ref_yaw) - y_ref * sin(ref_yaw);
+              x_point = x_ref * cos(ref_yaw) - y_ref * sin(ref_yaw);//image show
               y_point = x_ref * sin(ref_yaw) + y_ref * cos(ref_yaw);
 
               x_point += ref_x;
