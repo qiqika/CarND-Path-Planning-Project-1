@@ -148,12 +148,18 @@ This solution model come from the darienmt/CarND-Path-Planning-Project-P1.Key de
 
 ### 2. Behavior 
 
-1) Prepare for changing lane  
-a. Use relative position to make acceleration up or down. if car need overtake, the car acceleration set large which make car goes to the left lane. when surpass obstacle car, the speed change rate need turn down. we ought to take care of maximum acceleration due to jerk and speed limitation. The larger is value, the more shake is jerk.
-b. From last two position x,y , we get reference points.
-c. utilize our car s , d value to get next car position points by transform from Frenet s,d coordinates to Cartesian x,y(math theroy is similar triangle . s is distance change direction). smooth distance change way by using three estimate points. 
-d. making coordinates xy to local car coordinates.
-e. use all previous point and predict point to fit spline in local car coordinates.
-f. use the spline to get 30 m ahead points for car moving.
+Prepare for changing lane  
+
+1) Use relative position to make acceleration up or down. if car need overtake, the car acceleration set large which make car goes to the left lane. when surpass obstacle car, the speed change rate need turn down. we ought to take care of maximum acceleration due to jerk and speed limitation. The larger is value, the more shake is jerk.
+
+2) From last two position x,y , we get reference points.
+
+3) Utilize our car s , d value to get next car position points by transform from Frenet s,d coordinates to Cartesian x,y(math theroy is similar triangle . s is distance change direction). smooth distance change way by using three estimate points. 
+
+4) Making coordinates xy to local car coordinates.
+
+5) Use all previous point and predict point to fit spline in local car coordinates.
+
+6) Use the spline to get 30 m ahead points for car moving.
 
 
