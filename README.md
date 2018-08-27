@@ -142,24 +142,28 @@ This solution model come from the darienmt/CarND-Path-Planning-Project-P1.Key de
 ### 1. Prediction : Analysing other cars positions
 1) Utilize sensor d value to find the other cars lane.
 
-2) Use sensor speed to compute cars speed and get estimate cars s position.
+2) Use sensor x y speed to compute cars speed and get estimate cars s position after executing previous trajectory.
 
-3) Ensure the other cars whether or not impede our car for preventing collitions, and get relative position prepared for change lane.
+3) Verify the other cars whether or not impede our car for preventing collitions, and get relative position prepared for change lane or speed.
 
-### 2. Behavior 
-
-Prepare for changing lane  
+### 2. Behavior : Control speed and Changing lane  
 
 1) Use relative position to make acceleration up or down. if car need overtake, the car acceleration set large which make car goes to the left lane. when surpass obstacle car, the speed change rate need turn down. we ought to take care of maximum acceleration due to jerk and speed limitation. The larger is value, the more shake is jerk.
 
 2) From last two position x,y , we get reference points.
 
-3) Utilize our car s , d value to get next car position points by transform from Frenet s,d coordinates to Cartesian x,y(math theroy is similar triangle . s is distance change direction). smooth distance change way by using three estimate points. 
+3) Utilize our car s , d value to get next car position points by transform from Frenet s,d coordinates to Cartesian x,y(math theory is similar triangle . s is distance change direction). smooth distance change way by using point estimation three times. 
 
-4) Making coordinates xy to local car coordinates.
+4) Making coordinates xy to local car coordinates(local car coordinate is that x is speed direction , y is the vertical direction compared with x).
 
-5) Use all previous point and predict point to fit spline in local car coordinates.
+5) Use all previous point and predict point to fit spline in local car coordinates with same yaw and same start position.
 
 6) Use the spline to get 30 m ahead points for car moving.
+
+7) Return local coordinates to map coordinates for final x y.
+
+### 3. Future Work
+
+1) Change behavior step 5) fit function to 
 
 
