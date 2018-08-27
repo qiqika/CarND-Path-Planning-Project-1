@@ -164,6 +164,8 @@ This solution model come from the darienmt/CarND-Path-Planning-Project-P1.Key de
 
 ### 3. Future Work
 
-1) Change behavior step 5) fit function to 
+1) Change behavior step 5) fit function for better planning
+
+2) Use the dynamic vehicle model or other model to consider more complex situation.
 
 
