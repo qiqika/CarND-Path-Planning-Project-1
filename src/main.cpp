@@ -392,7 +392,7 @@ int main() {
             double x_add_on = 0;
 
             for( int i = 1; i < 50 - prev_size; i++ ) {
-              ref_vel += speed_diff;//speed change
+              ref_vel += speed_diff;//speed change!!!!
               if ( ref_vel > MAX_SPEED ) {
                 ref_vel = MAX_SPEED;
               } else if ( ref_vel < MAX_ACC ) {// speed is negative
